@@ -1,0 +1,53 @@
+{
+    "SC": {
+        "Estado": "Instituto Brasileiro de Geografia e Estatística",
+        "Português": "",
+        "English": "",
+        "": "Página Principal",
+        "Área Territorial": "95.730,690 \nkm²",
+        "População no último censo": "7.610.361 \npessoas",
+        "Densidade demográfica": "79,50 \nhab/km²",
+        "População estimada": "8.058.441 \npessoas",
+        "Matrículas no ensino fundamental": "941.272 \nmatrículas",
+        "IDH <span>Índice de desenvolvimento humano</span>": "IDH \nÍndice de desenvolvimento humano\n0,792",
+        "Total de receitas brutas realizadas": "61.440.241.790,39 \nR$",
+        "Total de despesas brutas empenhadas": "43.927.295.658,78 \nR$",
+        "Rendimento mensal domiciliar per capita": "2.601 \nR$",
+        "Total de veículos": "6.442.054 \nveículos",
+        "Fonte_URL": "https://www.ibge.gov.br/cidades-e-estados/sc.html"
+    },
+    "PR": {
+        "Estado": "Instituto Brasileiro de Geografia e Estatística",
+        "Português": "",
+        "English": "",
+        "": "Página Principal",
+        "Área Territorial": "199.298,981 \nkm²",
+        "População no último censo": "11.444.380 \npessoas",
+        "Densidade demográfica": "57,42 \nhab/km²",
+        "População estimada": "11.824.665 \npessoas",
+        "Matrículas no ensino fundamental": "1.365.869 \nmatrículas",
+        "IDH <span>Índice de desenvolvimento humano</span>": "IDH \nÍndice de desenvolvimento humano\n0,769",
+        "Total de receitas brutas realizadas": "92.067.885.773,50 \nR$",
+        "Total de despesas brutas empenhadas": "67.607.620.659,63 \nR$",
+        "Rendimento mensal domiciliar per capita": "2.482 \nR$",
+        "Total de veículos": "9.179.769 \nveículos",
+        "Fonte_URL": "https://www.ibge.gov.br/cidades-e-estados/pr.html"
+    },
+    "RS": {
+        "Estado": "Instituto Brasileiro de Geografia e Estatística",
+        "Português": "",
+        "English": "",
+        "": "Página Principal",
+        "Área Territorial": "281.707,151 \nkm²",
+        "População no último censo": "10.882.965 \npessoas",
+        "Densidade demográfica": "38,63 \nhab/km²",
+        "População estimada": "11.229.915 \npessoas",
+        "Matrículas no ensino fundamental": "1.255.794 \nmatrículas",
+        "IDH <span>Índice de desenvolvimento humano</span>": "IDH \nÍndice de desenvolvimento humano\n0,771",
+        "Total de receitas brutas realizadas": "88.012.101.405,33 \nR$",
+        "Total de despesas brutas empenhadas": "78.352.533.473,39 \nR$",
+        "Rendimento mensal domiciliar per capita": "2.608 \nR$",
+        "Total de veículos": "8.311.600 \nveículos",
+        "Fonte_URL": "https://www.ibge.gov.br/cidades-e-estados/rs.html"
+    }
+}
