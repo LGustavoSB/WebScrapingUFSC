@@ -1,6 +1,7 @@
 from extrator_IBGE import extrai_ibge as ibge
 from extrator_wikipedia import extrai_wikipedia as wiki
 import json
+from padronizador import *
 #Extrair dados
 
 ESTADOS = ['sc', 'pr', 'rs']
@@ -16,3 +17,4 @@ wiki_data = wiki(ESTADOS_NOMES)
 
 with open('estados_sul_wikipedia.json', 'w', encoding='utf-8') as f:
     json.dump(wiki_data, f, ensure_ascii=False, indent=4)
+

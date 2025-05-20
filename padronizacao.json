@@ -1,0 +1,16 @@
+{
+    "padronizacao_campos": {
+        "Estado": ["Estado", "UF"],
+        "Área Territorial": ["Área Territorial", "area_total"],
+        "População estimada": ["População estimada", "estimativa"],
+        "População no último censo": ["População no último censo", "censo_2022"],
+        "Densidade demográfica": ["Densidade demográfica", "densidade"],
+        "IDH": ["IDH", "idh", "IDH <span>Índice de desenvolvimento humano</span>"],
+        "Fonte_URL": ["fonte_url", "Fonte_URL"]
+    },
+    "conversao_siglas_estados": {
+        "SC": "Santa Catarina",
+        "PR": "Paraná",
+        "RS": "Rio Grande do Sul"
+    }
+}
