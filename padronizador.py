@@ -16,6 +16,7 @@ def padronizar_dados(dados, padroes_campos):
         if not chave_padronizada:
             chave_padronizada = chave  # mantém a original se não houver mapeamento
         dados_padronizados[chave_padronizada] = valor
+        print(dados_padronizados)
     return dados_padronizados
 
 def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizacao="padronizacao.json"):
@@ -35,7 +36,7 @@ def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizac
             dados_processados[estado_nome] = {}
         dados_processados[estado_nome][fonte_nome] = dados_padronizados
 
-    caminho_unificado = "dados_Json_Unificados.json"
+    caminho_unificado = "estados_sul_dados_integrados.json"
     if os.path.exists(caminho_unificado):
         with open(caminho_unificado, encoding='utf-8') as f:
             dados_unificados = json.load(f)

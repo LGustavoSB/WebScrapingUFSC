@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
-import json
 import re
 import unidecode
+from padronizador import carregar_padronizacao, padronizar_dados
 
 def _limpar_texto(texto):
     texto = re.sub(r'^•\s*', '', texto)
@@ -45,19 +45,41 @@ def _coletar_dados_estado_wikipedia(url):
 
 def extrai_wikipedia(lista_estados: list[str]) -> dict:
     """
-    Recebe uma lista de nome de estados (por ex. ['Santa_Catarina', 'Paraná', 'Rio_Grande_do_Sul]), monta as URLs
+    Recebe uma lista de nome de estados (por ex. ['Santa_Catarina', 'Paraná', 'Rio_Grande_do_Sul']), monta as URLs
     'https://pt.wikipedia.org/wiki/{nome_estado}', coleta e retorna
     um dict com chaves em maiúsculo e valores sendo outro dict de campos.
     """
     url_base = 'https://pt.wikipedia.org/wiki/'
     resultados: dict[str, dict] = {}
-
+    padronizacao = carregar_padronizacao()
+    padroes_campos = padronizacao["padronizacao_campos"]
     for estado_url in lista_estados:
         nome_estado = estado_url.replace('_', ' ')
-
         try:
-            resultados[nome_estado] = _coletar_dados_estado_wikipedia(url_base + estado_url)
+            dados_extraidos = _coletar_dados_estado_wikipedia(url_base + estado_url)
+            dados_padronizados = padronizar_dados(dados_extraidos, padroes_campos)
+            resultados[nome_estado] = dados_padronizados
         except Exception as e:
             print(f"Erro ao coletar {nome_estado} ({url_base + estado_url}): {e}")
-
     return resultados
+
+def padronizar_valor(valor):
+    if not isinstance(valor, str):
+        return valor
+
+    valor = re.sub(r'\b(km²|hab\.?|pessoas?|veículos?|R\$|anos?|‰ nasc\.?|matrículas?|bilhões?|milhões?)\b', '', valor, flags=re.IGNORECASE)
+
+    valor = re.sub(r'[^\w,.\- ]', '', valor)
+    valor = re.sub(r'\s{2,}', ' ', valor)
+    valor = valor.strip()
+
+    valor = valor.replace('\xa0', '')
+    valor = valor.replace('.', '').replace(',', '.')
+
+    try:
+        if '.' in valor:
+            return float(valor)
+        else:
+            return int(valor)
+    except ValueError:
+        return valor.lower()

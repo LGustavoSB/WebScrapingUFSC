@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebScraping</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+    <div id="main_container">
+        <h1>Informações por Estado</h1>
+
+        {% for estado_sigla, dados_estado in dados.items() %}
+            <div class="estado_container">
+                <h2>{{ estado_sigla }} - {{ dados_estado.estado }}</h2>
+                
+                <div class="fontes_container">
+                    {% for fonte in ['wikipedia', 'ibge'] %}
+                        <div class="fonte_container">
+                            <h3>{{ fonte|upper }}</h3>
+                            <ul class="data_container">
+                                {% for campo, info in dados_estado[fonte]['dados_correspondentes'].items() %}
+                                    <li id="{{ estado_sigla }}-{{ fonte }}-{{ campo }}" 
+                                        class="{% if info.corresponde %}corresponde{% else %}nao-corresponde{% endif %}">
+                                        <strong>{{ campo }}</strong>: {{ info.valor }}
+                                        {% if not info.corresponde %}
+                                            <small>Valor na outra fonte: {{ info.valor_comparado }}</small>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                <div class="collapsed-content" style="display: none;">
+                                    {% for campo, valor in dados_estado[fonte]['dados_unicos'].items() %}
+                                        <li id="{{ estado_sigla }}-{{ fonte }}-{{ campo }}" class="dado-unico">
+                                            <strong>{{ campo }}</strong>: {{ valor }}
+                                        </li>
+                                    {% endfor %}
+                                </div>
+                                <button type="button" class="collapse-button">Ver mais dados...</button>
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <script>
+        document.querySelectorAll(".collapse-button").forEach(button => {
+            button.addEventListener("click", () => {
+                const content = button.previousElementSibling;
+
+                const isVisible = content.style.display === "block";
+                content.style.display = isVisible ? "none" : "block";
+                button.textContent = isVisible ? "Ver mais dados..." : "Ver menos dados...";
+            });
+        });
+    </script>
+</body>
+</html>
