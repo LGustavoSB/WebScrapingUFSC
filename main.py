@@ -2,6 +2,7 @@ from extrator_IBGE import extrai_ibge as ibge
 from extrator_wikipedia import extrai_wikipedia as wiki
 import json
 from padronizador import *
+from limpador_de_json import processar_arquivo_json
 
 #Extrair dados
 def integra_dados(wiki_data, ibge_data):
@@ -31,6 +32,8 @@ def integra_dados(wiki_data, ibge_data):
     with open('estados_sul_dados_integrados.json', 'w', encoding='utf-8') as f:
         json.dump(estados_integrados, f, ensure_ascii=False, indent=4)
 
+
+
 ESTADOS = ['sc', 'pr', 'rs']
 
 ibge_data = ibge(ESTADOS)
@@ -48,3 +51,5 @@ with open('estados_sul_wikipedia.json', 'w', encoding='utf-8') as f:
 # adicionar_fonte_ao_json("estados_sul_wikipedia.json", "Wikipedia")
 # adicionar_fonte_ao_json("estados_sul_IBGE.json", "IBGE")
 integra_dados(wiki_data, ibge_data)
+processar_arquivo_json('estados_sul_dados_integrados.json')
+
