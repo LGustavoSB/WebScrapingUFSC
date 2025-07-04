@@ -31,6 +31,14 @@ cd src
 python main.py
 ```
 
+### 3.5 (opcional) Gere os gráficos
+
+Se quiser a criação de gráficos, pode rodar o arquivo `tabelas.py`
+
+````bash
+python tabelas.py
+```
+
 ### 4. Inicie a aplicação web
 
 Depois, vá para a pasta `app/` e execute o servidor Flask:

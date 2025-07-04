@@ -20,7 +20,6 @@ def clean_numeric_value(value):
 with open('estados_sul_dados_integrados.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# Estruturar os dados para o DataFrame
 records = []
 for sigla, estado_data in data.items():
     wiki_data = estado_data.get('dados_wikipedia', {})
@@ -60,8 +59,7 @@ metrics_to_plot = {
 for metric, title in metrics_to_plot.items():
     plt.style.use('seaborn-v0_8-whitegrid')
     fig, ax = plt.subplots(figsize=(12, 7))
-    
-    # Pivotar os dados para o gráfico
+
     pivot_df = df.pivot(index='Estado', columns='Fonte', values=metric)
     pivot_df.plot(kind='bar', ax=ax, width=0.4)
 
@@ -72,8 +70,7 @@ for metric, title in metrics_to_plot.items():
     ax.legend(title='Fonte')
     plt.tight_layout()
     
-    # Salvar o gráfico
-    file_name = f'grafico_barras_{metric.split(" ")[0].lower()}.png'
+    file_name = f'graficos/grafico_barras_{metric.split(" ")[0].lower()}.png'
     plt.savefig(file_name)
     print(f"Gráfico salvo como: {file_name}")
 
