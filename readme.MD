@@ -34,7 +34,7 @@ python main.py
 
 Se quiser a criação de gráficos, pode rodar o arquivo `tabelas.py`
 
-````bash
+```bash
 python tabelas.py
 ```
 
