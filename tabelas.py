@@ -5,7 +5,7 @@ import numpy as np
 import re
 import os
 
-# Função para limpar e converter valores numéricos
+
 def clean_numeric_value(value):
     if isinstance(value, str):
         # Remove pontos de milhar, "R$", "hab.", "km²", etc. e substitui vírgula por ponto decimal
@@ -50,7 +50,6 @@ for sigla, estado_data in data.items():
 df = pd.DataFrame(records)
 
 # --- Geração do Gráfico de Barras Agrupadas ---
-# Garante que o diretório de gráficos exista
 if not os.path.exists('graficos'):
     os.makedirs('graficos')
 

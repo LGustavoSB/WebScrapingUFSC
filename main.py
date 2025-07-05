@@ -39,6 +39,10 @@ def integra_dados(wiki_data, ibge_data):
     with open(caminho_arquivo, 'w', encoding='utf-8') as f:
         json.dump(estados_integrados, f, ensure_ascii=False, indent=4)
 
+
+
+
+
 # Garante que o diretório exista antes de qualquer operação
 garantir_diretorio_dados()
 
@@ -47,6 +51,9 @@ ibge_data = ibge(ESTADOS)
 
 with open('dados_json/estados_sul_IBGE.json', 'w', encoding='utf-8') as f:
     json.dump(ibge_data, f, ensure_ascii=False, indent=4)
+
+
+
 
 ESTADOS_NOMES = ['Santa_Catarina', 'Paraná', 'Rio_Grande_do_Sul']
 wiki_data = wiki(ESTADOS_NOMES)
