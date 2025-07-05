@@ -19,7 +19,10 @@
                 <div class="fontes_container">
                     {% for fonte in ['wikipedia', 'ibge'] %}
                         <div class="fonte_container">
-                            <h3>{{ fonte|upper }}</h3>
+                            <div>
+                                <h3>{{ fonte|upper }} </h3>
+                                <p class="qtd_dados">Dados encontrados: {{ dados_estado[fonte]['dados_encontrados'] }}</p>
+                            </div>
                             <ul class="data_container">
                                 {% for campo, info in dados_estado[fonte]['dados_correspondentes'].items() %}
                                     <li id="{{ estado_sigla }}-{{ fonte }}-{{ campo }}" 

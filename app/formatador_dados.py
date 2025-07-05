@@ -2,7 +2,7 @@ import json
 import re
 
 def formatar_dados(dados):
-    with open('padronizacao.json', 'r', encoding='utf-8') as f:
+    with open('padronizacao_config.json', 'r', encoding='utf-8') as f:
         padronizacao = json.load(f)
     
     campos_comparaveis = list(padronizacao['padronizacao_campos'].keys())
@@ -13,10 +13,12 @@ def formatar_dados(dados):
         dados_formatados[estado] = {
             'estado': dados_estado['estado'],
             'wikipedia': {
+                'dados_encontrados': 0,
                 'dados_correspondentes': {},
                 'dados_unicos': {}
             },
             'ibge': {
+                'dados_encontrados': 0,
                 'dados_correspondentes': {},
                 'dados_unicos': {}
             }
@@ -85,4 +87,7 @@ def formatar_dados(dados):
             if not any(campo in alt_list for alt_list in padronizacao['padronizacao_campos'].values()) and valor:
                 dados_formatados[estado]['ibge']['dados_unicos'][campo] = valor
     
+        dados_formatados[estado]['ibge']['dados_encontrados'] = len(ibge_data.keys())
+        dados_formatados[estado]['wikipedia']['dados_encontrados'] = len(wiki_data.keys())
+
     return dados_formatados
