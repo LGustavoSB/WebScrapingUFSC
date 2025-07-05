@@ -24,10 +24,9 @@ pip install -r requirements.txt
 
 ### 3. Execute o processamento dos dados
 
-Acesse a pasta `src/` e rode o script principal:
+Rode o script principal:
 
 ```bash
-cd src
 python main.py
 ```
 
