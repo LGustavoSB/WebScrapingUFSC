@@ -1,0 +1,106 @@
+body, *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+#main_container{
+    display: flex;
+    flex-direction: column;
+}
+
+#main_container h1{
+    text-align: center;
+    margin-bottom: 60px;
+    background-color: #333;
+    padding: 20px 40px;
+    color: #eca813;
+}
+
+.estado_container{
+    margin-bottom: 50px;
+}
+
+.estado_container h2{
+    margin: 20px;
+}
+
+.fonte_container{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.dados_correspondentes, .dados_unicos {
+    margin: 10px 0;
+}
+
+h4 {
+    margin: 10px 0;
+    color: #333;
+}
+
+.data_container {
+    list-style-type: none;
+    padding-left: 0;
+    width: 75%;
+}
+
+.data_container li {
+    padding: 15px 30px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.fontes_container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.fonte_container {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.corresponde {
+    color: green;
+    background-color: rgba(0, 128, 0, 0.212);
+}
+
+.nao-corresponde {
+    color: red;
+    background-color: rgba(255, 0, 0, 0.158);
+}
+
+small {
+    font-style: italic;
+    opacity: 0.8;
+    display: block;
+    margin-top: 3px;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.collapse-button{
+    background-color: #f6f6f6;
+    border: none;
+    cursor: pointer;
+}
+
+.collapsed-content {
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+.qtd_dados{
+    font-size: 16px;
+}

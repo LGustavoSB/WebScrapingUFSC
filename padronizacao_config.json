@@ -1,0 +1,18 @@
+{
+    "padronizacao_campos": {
+        "Estado": ["Estado", "UF"],
+        "area_territorial": ["area_territorial", "area_total"],
+        "populacao_estimada": ["populacao_estimada", "estimativa"],
+        "populacao_no_ultimo_censo": ["populacao_no_ultimo_censo", "censo_2022"],
+        "densidade_demografica": ["densidade_demografica", "densidade"],
+        "idh_indice_de_desenvolvimento_humano": ["idh_indice_de_desenvolvimento_humano", "idh", "IDH <span>Índice de desenvolvimento humano</span>"],
+        "fonte_url": ["fonte_url", "Fonte_URL"],
+        "governador": ["governador", "Governador"],
+        "capital": ["capital", "Capital"]
+    },
+    "conversao_siglas_estados": {
+        "SC": "Santa Catarina",
+        "PR": "Paraná",
+        "RS": "Rio Grande do Sul"
+    }
+}
