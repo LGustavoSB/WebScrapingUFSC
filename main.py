@@ -3,6 +3,12 @@ from extrator_wikipedia import extrai_wikipedia as wiki
 import json
 from padronizador import *
 from limpador_de_json import processar_arquivo_json
+import os
+
+# Função para garantir que o diretório de dados exista
+def garantir_diretorio_dados():
+    if not os.path.exists('dados_json'):
+        os.makedirs('dados_json')
 
 #Extrair dados
 def integra_dados(wiki_data, ibge_data):
@@ -28,28 +34,25 @@ def integra_dados(wiki_data, ibge_data):
         }
 
         estados_integrados[sigla] = estado_integrado
-
-    with open('estados_sul_dados_integrados.json', 'w', encoding='utf-8') as f:
+    
+    caminho_arquivo = 'dados_json/estados_sul_dados_integrados.json'
+    with open(caminho_arquivo, 'w', encoding='utf-8') as f:
         json.dump(estados_integrados, f, ensure_ascii=False, indent=4)
 
-
+# Garante que o diretório exista antes de qualquer operação
+garantir_diretorio_dados()
 
 ESTADOS = ['sc', 'pr', 'rs']
-
 ibge_data = ibge(ESTADOS)
 
-with open('estados_sul_IBGE.json', 'w', encoding='utf-8') as f:
+with open('dados_json/estados_sul_IBGE.json', 'w', encoding='utf-8') as f:
     json.dump(ibge_data, f, ensure_ascii=False, indent=4)
 
 ESTADOS_NOMES = ['Santa_Catarina', 'Paraná', 'Rio_Grande_do_Sul']
-
 wiki_data = wiki(ESTADOS_NOMES)
 
-with open('estados_sul_wikipedia.json', 'w', encoding='utf-8') as f:
+with open('dados_json/estados_sul_wikipedia.json', 'w', encoding='utf-8') as f:
     json.dump(wiki_data, f, ensure_ascii=False, indent=4)
 
-# adicionar_fonte_ao_json("estados_sul_wikipedia.json", "Wikipedia")
-# adicionar_fonte_ao_json("estados_sul_IBGE.json", "IBGE")
 integra_dados(wiki_data, ibge_data)
-processar_arquivo_json('estados_sul_dados_integrados.json')
-
+processar_arquivo_json('dados_json/estados_sul_dados_integrados.json')

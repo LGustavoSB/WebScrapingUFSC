@@ -1,7 +1,7 @@
 import json
 import os
 
-def carregar_padronizacao(caminho_padronizacao="padronizacao.json"):
+def carregar_padronizacao(caminho_padronizacao="padronizacao_config.json"):
     with open(caminho_padronizacao, encoding='utf-8') as f:
         return json.load(f)
 
@@ -16,10 +16,9 @@ def padronizar_dados(dados, padroes_campos):
         if not chave_padronizada:
             chave_padronizada = chave  # mantém a original se não houver mapeamento
         dados_padronizados[chave_padronizada] = valor
-        print(dados_padronizados)
     return dados_padronizados
 
-def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizacao="padronizacao.json"):
+def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizacao="padronizacao_config.json"):
     padronizacao = carregar_padronizacao(caminho_padronizacao)
     padroes_campos = padronizacao["padronizacao_campos"]
     conversao_siglas = padronizacao["conversao_siglas_estados"]
@@ -36,7 +35,12 @@ def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizac
             dados_processados[estado_nome] = {}
         dados_processados[estado_nome][fonte_nome] = dados_padronizados
 
-    caminho_unificado = "estados_sul_dados_integrados.json"
+    caminho_unificado = "dados_json/estados_sul_dados_integrados.json"
+    
+    # Garante que o diretório de dados exista
+    if not os.path.exists('dados_json'):
+        os.makedirs('dados_json')
+        
     if os.path.exists(caminho_unificado):
         with open(caminho_unificado, encoding='utf-8') as f:
             dados_unificados = json.load(f)
@@ -50,7 +54,3 @@ def adicionar_fonte_ao_json(caminho_arquivo_json, fonte_nome, caminho_padronizac
 
     with open(caminho_unificado, "w", encoding='utf-8') as f:
         json.dump(dados_unificados, f, ensure_ascii=False, indent=4)
-
-# Exemplos de uso:
-# adicionar_fonte_ao_json("estados_sul_wikipedia.json", "Wikipedia")
-# adicionar_fonte_ao_json("estados_sul_IBGE.json", "IBGE")

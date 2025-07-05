@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+import os
 
 # Função para limpar e converter valores numéricos
 def clean_numeric_value(value):
@@ -16,8 +17,8 @@ def clean_numeric_value(value):
     except (ValueError, TypeError):
         return np.nan
 
-# Carregar o arquivo JSON
-with open('estados_sul_dados_integrados.json', 'r', encoding='utf-8') as f:
+# Carregar o arquivo JSON da pasta correta
+with open('dados_json/estados_sul_dados_integrados.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 records = []
@@ -49,6 +50,10 @@ for sigla, estado_data in data.items():
 df = pd.DataFrame(records)
 
 # --- Geração do Gráfico de Barras Agrupadas ---
+# Garante que o diretório de gráficos exista
+if not os.path.exists('graficos'):
+    os.makedirs('graficos')
+
 metrics_to_plot = {
     'Área Territorial (km²)': 'Área Territorial (km²)',
     'População (Censo)': 'População no Último Censo',
